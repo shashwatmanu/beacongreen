@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-mono: var(--font-jetbrains), monospace;
+  --font-sans: var(--font-jakarta), sans-serif;
+
+  --color-pine-light: #8C6239; /* Warm Oak */
+  --color-pine: #4E3629;       /* Rich Mahogany / Timber */
+  --color-pine-dark: #2A1E17;  /* Dark Walnut */
+  --color-charcoal: #211611;   /* Deep Charcoal Wood */
+  --color-offwhite: #FBFBFA;
+}
+
+:root {
+  --background: #FBFBFA;
+  --foreground: #1A202C;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: #C5A880;
+  color: #211611;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FBFBFA;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A880;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4E3629;
+}
+
+/* Magazine dots grid background pattern */
+@utility bg-dots {
+  background-image: radial-gradient(circle, #C5A880 1px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+@utility bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+.pulse-marker-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid #C5A880;
+  pointer-events: none;
+  animation: marker-pulse 2s infinite ease-out;
+}
+
+/* Force WebGL map canvas to respect container width & prevent mobile horizontal overflow */
+.maplibregl-canvas, .mapboxgl-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+.maplibregl-map, .mapboxgl-map {
+  overflow: hidden !important;
+}
+
+@keyframes marker-pulse {
+  0% {
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+  }
+  100% {
+    width: 28px;
+    height: 28px;
+    opacity: 0;
+  }
+}
+
+/* GPU-accelerated cinematic road drawing animations */
+@keyframes draw-road {
+  from {
+    stroke-dashoffset: 800;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-road {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: draw-road 7s linear forwards;
+  animation-delay: 1s; /* Wait 1s after user arrives on section before drawing path */
+}
+
+@keyframes fade-labels {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-labels {
+  opacity: 0;
+  animation: fade-labels 1s ease-out forwards;
+  animation-delay: 1.8s; /* Wait 1s drawing delay + 0.8s trace start */
+}
+
+/* Luxury physical wood grain textures & warm timber gradients */
+@utility bg-wood-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 6px
+  ), repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.015) 0px,
+    rgba(0, 0, 0, 0.015) 2px,
+    transparent 2px,
+    transparent 120px
+  );
+}
+
+@utility bg-wood-dark {
+  background: linear-gradient(135deg, #2D1E16 0%, #170E0A 100%);
+}
+
+@utility bg-wood-teak {
+  background: linear-gradient(135deg, #5C3D2E 0%, #3B241A 100%);
+}
+
+@utility bg-wood-oak {
+  background: linear-gradient(135deg, #7A553E 0%, #523725 100%);
+}
+
+@utility bg-wood-button {
+  background-image: 
+    linear-gradient(rgba(33, 22, 17, 0.45), rgba(33, 22, 17, 0.55)), 
+    url('/images/wood_texture.png');
+  background-size: cover;
+  background-position: center;
+  border: 1.5px solid #6d4734;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility bg-wood-button-hover {
+  background-image: 
+    linear-gradient(rgba(42, 29, 22, 0.35), rgba(42, 29, 22, 0.45)), 
+    url('/images/wood_texture.png');
+  background-size: cover;
+  background-position: center;
+  border: 1.5px solid #8d634d;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 6px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1.5px);
+}
+
