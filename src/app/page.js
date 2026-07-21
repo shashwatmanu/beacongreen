@@ -888,15 +888,33 @@ export default function Home() {
               </div>
 
               {/* Leadership Container with 50% Photo Overlap Escaping Box */}
-              <div className="relative pt-20 sm:pt-24 md:pt-0 md:pl-28 mt-24 md:mt-8">
+              <div className="relative pt-20 md:pt-0 md:pl-28 mt-16 md:mt-8">
+                {/* Mobile View Chairman Photo — 50% Escaping OUT OF THE TOP of the Box */}
+                <div className="md:hidden absolute -top-16 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
+                  <div className="w-44 sm:w-48 aspect-[4/5] bg-stone-100 border-4 border-white shadow-[0_15px_35px_rgba(0,0,0,0.22)] rounded-2xl overflow-hidden relative">
+                    {/* Corner masking tape graphic for physical photo look */}
+                    <div className="absolute top-2 -left-6 w-20 h-5 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
+                    <div className="absolute bottom-2 -right-6 w-20 h-5 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
+
+                    <img
+                      src="/images/hemant-kumar-singh.jpg"
+                      alt="Mr. Hemant Kumar Singh - Chairman"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="mt-2 font-mono text-[8.5px] text-[#C5A880] uppercase tracking-widest text-center">
+                    <span>CHAIRMAN • BEACON HILLS ESTATE</span>
+                  </div>
+                </div>
+
                 {/* Text Box Container */}
-                <div className="bg-[#FAF9F6] border border-[#C5A880]/30 p-6 sm:p-8 md:p-10 md:pl-36 rounded-2xl shadow-sm relative md:overflow-hidden">
+                <div className="bg-[#FAF9F6] border border-[#C5A880]/30 p-6 pt-24 sm:p-8 sm:pt-28 md:p-10 md:pl-36 rounded-2xl shadow-sm relative overflow-hidden">
                   {/* Subtle drafting watermark accent */}
                   <div className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full border border-[#C5A880]/10 pointer-events-none" />
 
                   {/* Bio & Details */}
-                  <div className="space-y-4 relative z-10 pt-20 sm:pt-24 md:pt-0">
-                    <div className="text-right">
+                  <div className="space-y-4 relative z-10">
+                    <div className="text-center md:text-right">
                       <h4 className="font-serif text-2xl sm:text-3xl text-[#211611] font-semibold">
                         Mr. Hemant Kumar Singh
                       </h4>
@@ -930,24 +948,6 @@ export default function Home() {
                     />
                   </div>
                   <div className="mt-3 font-mono text-[9px] text-[#C5A880] uppercase tracking-widest text-center">
-                    <span>CHAIRMAN • BEACON HILLS ESTATE</span>
-                  </div>
-                </div>
-
-                {/* Mobile View Chairman Photo — Exactly 50% Escaping Top Edge into Text Box */}
-                <div className="md:hidden absolute -top-24 sm:-top-28 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pointer-events-auto">
-                  <div className="w-44 sm:w-52 aspect-[4/5] bg-stone-100 border-4 border-white shadow-[0_20px_40px_rgba(0,0,0,0.25)] rounded-2xl overflow-hidden relative group">
-                    {/* Corner masking tape graphic for physical photo look */}
-                    <div className="absolute top-2 -left-5 w-16 h-5 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
-                    <div className="absolute bottom-2 -right-5 w-16 h-5 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
-
-                    <img
-                      src="/images/hemant-kumar-singh.jpg"
-                      alt="Mr. Hemant Kumar Singh - Chairman"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <div className="mt-2 font-mono text-[8.5px] text-[#C5A880] uppercase tracking-widest text-center bg-[#FAF9F6]/90 px-2 py-0.5 rounded-full border border-[#C5A880]/20 shadow-xs">
                     <span>CHAIRMAN • BEACON HILLS ESTATE</span>
                   </div>
                 </div>
