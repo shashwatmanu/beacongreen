@@ -888,14 +888,14 @@ export default function Home() {
               </div>
 
               {/* Leadership Container with 50% Photo Overlap Escaping Box */}
-              <div className="relative pt-12 md:pt-0 md:pl-28 mt-8 flex flex-col-reverse md:block">
+              <div className="relative pt-16 sm:pt-20 md:pt-0 md:pl-28 mt-12 md:mt-8">
                 {/* Text Box Container */}
-                <div className="bg-[#FAF9F6] border border-[#C5A880]/30 p-6 sm:p-8 md:p-10 md:pl-36 rounded-2xl shadow-sm relative overflow-hidden">
+                <div className="bg-[#FAF9F6] border border-[#C5A880]/30 p-6 sm:p-8 md:p-10 md:pl-36 rounded-2xl shadow-sm relative md:overflow-hidden">
                   {/* Subtle drafting watermark accent */}
                   <div className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full border border-[#C5A880]/10 pointer-events-none" />
 
                   {/* Bio & Details */}
-                  <div className="space-y-4 relative z-10">
+                  <div className="space-y-4 relative z-10 pt-16 sm:pt-20 md:pt-0">
                     <div className="text-right">
                       <h4 className="font-serif text-2xl sm:text-3xl text-[#211611] font-semibold">
                         Mr. Hemant Kumar Singh
@@ -910,7 +910,7 @@ export default function Home() {
                         Mr. Hemant Kumar Singh is a seasoned real estate developer and promoter with more than three decades of experience in the Indian real estate and construction industry. During his career, he has developed and delivered over 12 million sq. ft. across multiple residential, commercial, institutional, and mixed-use developments. His experience spans high-rise apartment buildings, group-housing projects, luxury villas, plotted developments, farmhouses, builder floors, office towers, retail complexes, malls, hotels, hospitals, and government-tendered construction across Delhi NCR, Uttar Pradesh, Uttarakhand, and other key markets in North India.
                       </p>
                       <p>
-                        Known for his hands-on leadership and end-to-end development expertise, Mr. Hemant Kumar Singh has led projects from land acquisition and strategic planning through construction, quality oversight, and final delivery. His approach is defined by disciplined execution, thoughtful decision-making, strong professional relationships, and an unwavering commitment to completing every project he undertakes. As Chairman of Beacon Hills Estate, he is personally overseeing the planning and execution of Beacon Green One, ensuring that every aspect of the development reflects the standards, accountability, and experience built over his distinguished career.
+                        Known for his hands-on leadership and end-to-end development expertise, Mr. Hemant Kumar Singh has led projects from land acquisition and strategic planning through construction, quality oversight, and final delivery. His approach is defined by disciplined execution, thoughtful decision-making, strong professional relationships, and an unwavering commitment to completing every project he undertakes. As Chairman of Beacon Hills Estate, he is personally overseeing the planning and execution of Beacon Green One, ensuring that every aspect of the development reflects the standards leaders, accountability, and experience built over his distinguished career.
                       </p>
                     </div>
                   </div>
@@ -934,16 +934,20 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Mobile View Chairman Photo (Comes FIRST on mobile before text) */}
-                <div className="md:hidden flex flex-col items-center mb-6 relative z-20">
-                  <div className="w-48 aspect-[4/5] bg-stone-100 border-4 border-white shadow-xl rounded-xl overflow-hidden relative">
+                {/* Mobile View Chairman Photo — 50% Escaping Outside Top of Card */}
+                <div className="md:hidden absolute -top-14 sm:-top-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pointer-events-auto">
+                  <div className="w-44 sm:w-52 aspect-[4/5] bg-stone-100 border-4 border-white shadow-[0_15px_35px_rgba(0,0,0,0.25)] rounded-2xl overflow-hidden relative group">
+                    {/* Corner masking tape graphic for physical photo look */}
+                    <div className="absolute top-2 -left-5 w-16 h-5 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
+                    <div className="absolute bottom-2 -right-5 w-16 h-5 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
+
                     <img
                       src="/images/hemant-kumar-singh.jpg"
                       alt="Mr. Hemant Kumar Singh - Chairman"
                       className="w-full h-full object-cover object-top"
                     />
                   </div>
-                  <div className="mt-2 font-mono text-[9px] text-[#C5A880] uppercase tracking-widest">
+                  <div className="mt-2 font-mono text-[8.5px] text-[#C5A880] uppercase tracking-widest text-center bg-[#FAF9F6]/90 px-2 py-0.5 rounded-full border border-[#C5A880]/20 shadow-xs">
                     <span>CHAIRMAN • BEACON HILLS ESTATE</span>
                   </div>
                 </div>
