@@ -97,10 +97,10 @@ export default function Home() {
   // Accordion Blueprint Studio State
   const [activePlan, setActivePlan] = useState("824");
   const plans = [
-    { id: "824", title: "1 BHK (824 Sq. Ft.)", image: "/images/plan-824.png", type: "Type B", bed: "1 BHK", size: 824, toilets: "1 Toilet", balcony: "4 Ft. Wide Balcony", rate: "₹45.32 L" },
-    { id: "1160", title: "2 BHK (1160 Sq. Ft.)", image: "/images/plan-1160.png", type: "Type A3", bed: "2 BHK", size: 1160, toilets: "2 Toilets", balcony: "5 Ft. Wide Balcony", rate: "₹63.80 L" },
-    { id: "1360", title: "2 BHK (1360 Sq. Ft.)", image: "/images/plan-1360.png", type: "Type A2", bed: "2 BHK", size: 1360, toilets: "2 Toilets", balcony: "4 Ft. 6 In. Wide Balcony", rate: "₹74.80 L" },
-    { id: "1410", title: "2 BHK (1410 Sq. Ft.)", image: "/images/plan-1410.png", type: "Type A1", bed: "2 BHK", size: 1410, toilets: "2 Toilets", balcony: "4 Ft. 6 In. Wide Balcony", rate: "₹77.55 L" }
+    { id: "824", title: "1 BHK (824 Sq. Ft.)", image: "/images/plan-824.png", type: "Type B", bed: "1 BHK", size: 824, toilets: "1 Toilet", balcony: "4 Ft. Wide Balcony", rate: "₹53.56 L" },
+    { id: "1160", title: "2 BHK (1160 Sq. Ft.)", image: "/images/plan-1160.png", type: "Type A3", bed: "2 BHK", size: 1160, toilets: "2 Toilets", balcony: "5 Ft. Wide Balcony", rate: "₹75.40 L" },
+    { id: "1360", title: "2 BHK (1360 Sq. Ft.)", image: "/images/plan-1360.png", type: "Type A2", bed: "2 BHK", size: 1360, toilets: "2 Toilets", balcony: "4 Ft. 6 In. Wide Balcony", rate: "₹88.40 L" },
+    { id: "1410", title: "2 BHK (1410 Sq. Ft.)", image: "/images/plan-1410.png", type: "Type A1", bed: "2 BHK", size: 1410, toilets: "2 Toilets", balcony: "4 Ft. 6 In. Wide Balcony", rate: "₹91.65 L" }
   ];
 
   const currentPlanDetails = plans.find(p => p.id === activePlan);
@@ -186,28 +186,18 @@ export default function Home() {
   const [activeLedgerIndex, setActiveLedgerIndex] = useState(0);
 
   const estimatorPlan = plans.find(p => p.id === selectedPlanId);
-  const baseRate = 5500;
+  const baseRate = 6500;
   const rawCost = estimatorPlan.size * baseRate;
 
   const paymentSchedules = {
-    flexi: [
-      { step: "Booking Amount", pct: 15, label: "Immediate on booking" },
-      { step: "Second Milestone", pct: 15, label: "Within 60 days of booking" },
-      { step: "Third Milestone", pct: 20, label: "Within 120 days of booking" },
-      { step: "Structure Milestone", pct: 20, label: "On completion of super-structure" },
-      { step: "Possession Handover", pct: 30, label: "At final registry & keys handover" }
-    ],
-    construction: [
-      { step: "Booking Amount", pct: 10, label: "Immediate booking value" },
-      { step: "Excavation Milestone", pct: 15, label: "On completion of site excavation" },
-      { step: "Plinth Level Completion", pct: 15, label: "On completion of building plinth" },
-      { step: "Superstructure Cast", pct: 20, label: "On structure framing & slab casting" },
-      { step: "Brickwork & Plastering", pct: 20, label: "On wall completion & external plaster" },
-      { step: "Handover & Finishing", pct: 20, block: "At final possession & finishing checks" }
+    standard: [
+      { step: "Booking Amount", pct: 20, label: "Immediate on booking" },
+      { step: "Second Milestone", pct: 30, label: "Within 60 days / agreement milestone" },
+      { step: "Possession Handover", pct: 50, label: "At final registry & keys handover" }
     ]
   };
 
-  const activeSchedule = paymentSchedules[paymentPlan];
+  const activeSchedule = paymentSchedules.standard;
 
   // Dynamic MapLibre WebGL 3D Flight & Toggle State
   const [maplibreLoaded, setMaplibreLoaded] = useState(false);
@@ -462,14 +452,15 @@ export default function Home() {
 
           {/* Main Logo & Identity */}
           <a href="#hero" className="flex items-center gap-3 group relative z-10">
-            <div className="w-8 h-8 rounded-none bg-[#4E3629] flex items-center justify-center group-hover:scale-[1.03] transition-transform duration-300 border border-[#C5A880]/70 relative">
-              {/* Drafting crosshairs */}
-              <div className="absolute -top-[2px] -left-[2px] w-1.5 h-1.5 border-t border-l border-[#C5A880]" />
-              <div className="absolute -bottom-[2px] -right-[2px] w-1.5 h-1.5 border-b border-r border-[#C5A880]" />
-              <span className="text-[#FBFBFA] font-serif text-sm font-semibold tracking-tighter">B</span>
+            <div className="w-9 h-9 rounded-lg bg-transparent flex items-center justify-center group-hover:scale-[1.05] transition-transform duration-300 relative overflow-hidden">
+              <img
+                src="/images/beacon-logo.png"
+                alt="Beacon Hill Estate Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
-              <span className="font-serif font-extrabold tracking-widest text-[#211611] text-xs sm:text-sm block leading-none">BEACON GREEN ONE</span>
+              <span className="font-serif font-extrabold tracking-widest text-[#211611] text-xs sm:text-sm block leading-none">BEACON HILL ESTATE</span>
               <span className="text-[7px] font-mono tracking-widest text-[#C5A880] uppercase block mt-1">DEHRADUN FOOTHILLS LEAFLET</span>
             </div>
           </a>
@@ -678,20 +669,13 @@ export default function Home() {
         <ScrollReveal className="flex flex-col relative">
 
           <div className="text-center mb-0 mt-2 relative">
-            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-[#C5A880] block mb-3 font-semibold relative z-10">
-              DEHRADUN FOOTHILLS SANCTUARY
+            <span className="text-xs sm:text-sm font-mono uppercase tracking-[0.4em] text-[#C5A880] block mb-3 font-semibold relative z-10">
+              BEACON GREEN ONE
             </span>
             <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl tracking-[-0.03em] leading-[0.92] text-[#211611] font-light uppercase relative z-10">
               <SplitText text="Elevated Living" />
             </h1>
           </div>
-
-          {/* Newspaper metadata rules */}
-          {/* <div className="border-t border-b border-[#C5A880]/30 py-3.5 my-3 grid grid-cols-3 text-center font-mono text-[9px] uppercase tracking-[0.25em] text-[#C5A880] gap-4">
-            <span className="text-left hidden sm:inline">COORDINATES: 30.3165° N</span>
-            <span className="sm:text-center text-left">PLOT NO 10, MAUZA CHALLANG</span>
-            <span className="text-right">ELEVATION 647M</span>
-          </div> */}
 
           {/* Panoramic Framed Building Render — optimized taller aspect ratio on mobile, compressed 2.4MB video */}
           <div className="w-full aspect-[16/10] sm:aspect-[2.17/1] rounded-2xl overflow-hidden shadow-2xl border border-[#C5A880]/100 relative group my-4 bg-[#211611]">
@@ -711,11 +695,6 @@ export default function Home() {
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
-
-            {/* <div className="absolute bottom-4 right-4 bg-[#211611]/85 backdrop-blur-md border border-[#C5A880]/30 py-2 px-3 rounded-lg text-stone-300 font-mono text-[8px] tracking-wider uppercase flex items-center gap-2 z-10">
-              <Compass className="animate-spin-slow text-[#C5A880]" size={10} />
-              <span>Full View Render</span>
-            </div> */}
           </div>
 
           {/* Newspaper metadata rules */}
@@ -768,24 +747,25 @@ export default function Home() {
       {/* 2. MONOLITHIC NARRATIVE (The Trust Gallery with Swaying Watermark) */}
       <section id="gallery" className="py-20 px-6 md:px-12 relative overflow-hidden bg-grain bg-[#FAF9F6] border-y-[3px] border-double border-[#C5A880]/40">
 
-        {/* CENTERED STATIC WATERMARK */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 select-none">
-          <span className="font-serif text-[12rem] lg:text-[18rem] text-[#C5A880]/15 tracking-tighter uppercase font-bold whitespace-nowrap text-center">
-            Heritage
-          </span>
-        </div>
-
         <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
 
-          <ScrollReveal className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start mb-12">
-            <div className="w-16 h-[1.5px] bg-[#C5A880] mb-8" />
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C5A880] block mb-4 font-semibold">THE TRUST GALLERY</span>
+          <ScrollReveal className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start mb-12 relative w-full">
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#211611] leading-[1.15] tracking-tight mb-8">
+            {/* HERITAGE WATERMARK CENTERED VERTICALLY BEHIND THE PARAGRAPH BLOCK */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 select-none opacity-15">
+              <span className="font-serif text-[8rem] sm:text-[11rem] lg:text-[14rem] text-[#C5A880] tracking-tighter uppercase font-bold whitespace-nowrap">
+                Heritage
+              </span>
+            </div>
+
+            <div className="w-16 h-[1.5px] bg-[#C5A880] mb-8 relative z-10" />
+            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C5A880] block mb-4 font-semibold relative z-10">THE TRUST GALLERY</span>
+
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#211611] leading-[1.15] tracking-tight mb-8 relative z-10">
               Quiet luxury projection, built on nearly three decades of structural value.
             </h2>
 
-            <div className="font-sans text-stone-655 space-y-6 text-sm sm:text-base leading-relaxed font-light text-justify">
+            <div className="font-sans text-stone-655 space-y-6 text-sm sm:text-base leading-relaxed font-light text-justify relative z-10">
               <p className="first-letter:font-serif first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:font-bold first-letter:text-pine">
                 For nearly three decades, our group has meticulously constructed trust and architectural worth across the National Capital Region (NCR). Every concrete pillar, cantilever structure, and layout design is engineered around structural safety, space efficiency, and premium aesthetic finishes.
               </p>
@@ -808,6 +788,166 @@ export default function Home() {
               <div className="mt-3 flex justify-between font-mono text-[8px] text-[#C5A880] uppercase tracking-widest px-1">
                 <span>FIGURE 1.0 — FRONT ELEVATION VIEW B</span>
                 <span>ARCHITECTURAL RENDERING</span>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* ABOUT BEACON HILLS ESTATE */}
+          <ScrollReveal className="w-full mt-16 pt-16 border-t border-[#C5A880]/30 relative pb-4" delay={0.3}>
+            {/* Left Side Building Towers (Bottom aligned of Development Vision section) */}
+            <div className="absolute left-[-2rem] sm:left-[-5rem] md:left-[-8rem] lg:left-[-11rem] bottom-0 pointer-events-none z-0 opacity-40">
+              <svg className="w-40 sm:w-52 md:w-64 h-64" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <motion.path
+                  d="M 10 240 L 10 70 L 100 70 L 100 240"
+                  stroke="#C5A880" strokeWidth="1.5" strokeDasharray="4 4"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 3, ease: "easeOut" }}
+                />
+                <motion.path
+                  d="M 30 90 H 80 M 30 120 H 80 M 30 150 H 80 M 30 180 H 80 M 30 210 H 80"
+                  stroke="#C5A880" strokeWidth="1" opacity="0.6"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 2.5, delay: 0.5 }}
+                />
+                <motion.path
+                  d="M 120 240 L 120 20 L 230 20 L 230 240"
+                  stroke="#C5A880" strokeWidth="2"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 3.5, ease: "easeOut", delay: 0.3 }}
+                />
+                <motion.path
+                  d="M 140 50 H 210 M 140 80 H 210 M 140 110 H 210 M 140 140 H 210 M 140 170 H 210 M 140 200 H 210"
+                  stroke="#C5A880" strokeWidth="1" strokeDasharray="3 3" opacity="0.7"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 3, delay: 0.8 }}
+                />
+                <motion.path d="M 0 240 H 280" stroke="#C5A880" strokeWidth="1.5" />
+              </svg>
+            </div>
+
+            {/* Right Side Building Towers (Bottom aligned of Development Vision section) */}
+            <div className="absolute right-[-2rem] sm:right-[-5rem] md:right-[-8rem] lg:right-[-11rem] bottom-0 pointer-events-none z-0 opacity-40">
+              <svg className="w-40 sm:w-52 md:w-64 h-64" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <motion.path
+                  d="M 70 240 L 70 30 L 180 30 L 180 240"
+                  stroke="#C5A880" strokeWidth="2"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 3.5, ease: "easeOut", delay: 0.2 }}
+                />
+                <motion.path
+                  d="M 90 60 H 160 M 90 90 H 160 M 90 120 H 160 M 90 150 H 160 M 90 180 H 160 M 90 210 H 160"
+                  stroke="#C5A880" strokeWidth="1" strokeDasharray="3 3" opacity="0.7"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 3, delay: 0.7 }}
+                />
+                <motion.path
+                  d="M 200 240 L 200 80 L 290 80 L 290 240"
+                  stroke="#C5A880" strokeWidth="1.5" strokeDasharray="4 4"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 3, ease: "easeOut", delay: 0.4 }}
+                />
+                <motion.path
+                  d="M 220 105 H 270 M 220 135 H 270 M 220 165 H 270 M 220 195 H 270"
+                  stroke="#C5A880" strokeWidth="1" opacity="0.6"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 2.5, delay: 1 }}
+                />
+                <motion.path d="M 20 240 H 300" stroke="#C5A880" strokeWidth="1.5" />
+              </svg>
+            </div>
+
+            <div className="max-w-3xl mx-auto relative z-10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-[1.5px] bg-[#C5A880]" />
+                <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C5A880] font-semibold">
+                  DEVELOPMENT VISION
+                </span>
+              </div>
+
+              <h3 className="font-serif text-3xl sm:text-4xl text-[#211611] tracking-tight mb-8">
+                About Beacon Hills Estate
+              </h3>
+
+              <div className="font-sans text-stone-655 space-y-6 text-sm sm:text-base leading-relaxed font-light text-justify">
+                <p>
+                  Beacon Hills Estate is a professionally managed real estate development company committed to creating thoughtfully designed spaces defined by quality, transparency, and enduring value. With a strategic focus on Uttarakhand and Delhi NCR, the company brings together contemporary design, disciplined execution, responsible development, and a deep understanding of how people aspire to live.
+                </p>
+                <p>
+                  Beacon Green One, the company’s flagship development in Dehradun, reflects this vision through boutique scale, premium living, nature-led surroundings, and strong long-term value. Conceived as a limited collection of thoughtfully planned 1 and 2 BHK residences, the project combines privacy, modern conveniences, premium specifications, and a peaceful setting near the foothills of Mussoorie. It represents the beginning of Beacon Hills Estate’s wider vision to develop distinctive residential, commercial, villa, group-housing, and mixed-use projects across Uttarakhand and Delhi NCR.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* LEADERSHIP SECTION */}
+          <ScrollReveal className="w-full mt-16 pt-16 border-t border-[#C5A880]/30" delay={0.4}>
+            <div className="max-w-3xl mx-auto">
+              <div className="flex flex-col items-end text-right mb-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-[1.5px] bg-[#C5A880]" />
+                  <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C5A880] font-semibold">
+                    LEADERSHIP & GOVERNANCE
+                  </span>
+                </div>
+
+                <h3 className="font-serif text-3xl sm:text-4xl text-[#211611] tracking-tight">
+                  Leadership
+                </h3>
+              </div>
+
+              {/* Leadership Container with 50% Photo Overlap Escaping Box */}
+              <div className="relative pt-12 md:pt-0 md:pl-28 mt-8">
+                {/* Text Box Container */}
+                <div className="bg-[#FAF9F6] border border-[#C5A880]/30 p-6 sm:p-8 md:p-10 md:pl-36 rounded-2xl shadow-sm relative overflow-hidden">
+                  {/* Subtle drafting watermark accent */}
+                  <div className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full border border-[#C5A880]/10 pointer-events-none" />
+
+                  {/* Bio & Details */}
+                  <div className="space-y-4 relative z-10">
+                    <div className="text-right">
+                      <h4 className="font-serif text-2xl sm:text-3xl text-[#211611] font-semibold">
+                        Mr. Hemant Kumar Singh
+                      </h4>
+                      <span className="text-xs font-mono uppercase tracking-widest text-[#C5A880] font-bold block mt-1">
+                        Chairman
+                      </span>
+                    </div>
+
+                    <div className="font-sans text-stone-655 text-sm leading-relaxed font-light space-y-4 text-justify">
+                      <p>
+                        Mr. Hemant Kumar Singh is a seasoned real estate developer and promoter with more than three decades of experience in the Indian real estate and construction industry. During his career, he has developed and delivered over 12 million sq. ft. across multiple residential, commercial, institutional, and mixed-use developments. His experience spans high-rise apartment buildings, group-housing projects, luxury villas, plotted developments, farmhouses, builder floors, office towers, retail complexes, malls, hotels, hospitals, and government-tendered construction across Delhi NCR, Uttar Pradesh, Uttarakhand, and other key markets in North India.
+                      </p>
+                      <p>
+                        Known for his hands-on leadership and end-to-end development expertise, Mr. Hemant Kumar Singh has led projects from land acquisition and strategic planning through construction, quality oversight, and final delivery. His approach is defined by disciplined execution, thoughtful decision-making, strong professional relationships, and an unwavering commitment to completing every project he undertakes. As Chairman of Beacon Hills Estate, he is personally overseeing the planning and execution of Beacon Green One, ensuring that every aspect of the development reflects the standards, accountability, and experience built over his distinguished career.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Chairman Image — 50% Escaping Outside the Text Box on Desktop */}
+                <div className="absolute top-1/2 -translate-y-1/2 left-0 md:-left-8 z-20 pointer-events-auto hidden md:block">
+                  <div className="w-56 lg:w-64 aspect-[4/5] bg-stone-100 border-4 border-white shadow-[0_20px_50px_rgba(0,0,0,0.22)] rounded-2xl overflow-hidden relative group hover:scale-[1.03] hover:-rotate-1 transition-transform duration-500">
+                    {/* Corner masking tape graphic for physical photo look */}
+                    <div className="absolute top-3 -left-6 w-20 h-6 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
+                    <div className="absolute bottom-3 -right-6 w-20 h-6 bg-[#C5A880]/30 border border-[#C5A880]/50 -rotate-45 pointer-events-none z-10 backdrop-blur-xs shadow-xs" />
+
+                    <img
+                      src="/images/hemant-kumar-singh.jpg"
+                      alt="Mr. Hemant Kumar Singh - Chairman"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="mt-3 font-mono text-[9px] text-[#C5A880] uppercase tracking-widest text-center">
+                    <span>CHAIRMAN • BEACON HILLS ESTATE</span>
+                  </div>
+                </div>
+
+                {/* Mobile View Chairman Photo (Clean stacked alignment for small screens) */}
+                <div className="md:hidden flex flex-col items-center mb-6 -mt-16 relative z-20">
+                  <div className="w-48 aspect-[4/5] bg-stone-100 border-4 border-white shadow-xl rounded-xl overflow-hidden relative">
+                    <img
+                      src="/images/hemant-kumar-singh.jpg"
+                      alt="Mr. Hemant Kumar Singh - Chairman"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="mt-2 font-mono text-[9px] text-[#C5A880] uppercase tracking-widest">
+                    <span>CHAIRMAN • BEACON HILLS ESTATE</span>
+                  </div>
+                </div>
+
               </div>
             </div>
           </ScrollReveal>
@@ -1378,9 +1518,8 @@ export default function Home() {
             />
 
             {/* Formula notations & text */}
-            <text x="500" y="60" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="3" fontWeight="bold" textAnchor="middle">TOTAL BSP = AREA × ₹5,500/SQFT</text>
-            <text x="135" y="100" fill="#C5A880" fontFamily="monospace" fontSize="7" opacity="0.8">FLEXI: 15% + 15% + 20% + 20% + 30%</text>
-            <text x="135" y="120" fill="#C5A880" fontFamily="monospace" fontSize="7" opacity="0.8">CONSTRUCTION: 10% + 15% + 15% + 20% + 20% + 20%</text>
+            <text x="500" y="60" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="3" fontWeight="bold" textAnchor="middle">TOTAL BSP = AREA × ₹6,500/SQFT</text>
+            <text x="135" y="100" fill="#C5A880" fontFamily="monospace" fontSize="7" opacity="0.8">MILESTONES: 20% + 30% + 50% HANDOVER</text>
           </svg>
         </div>
 
@@ -1421,26 +1560,10 @@ export default function Home() {
                   </div>
 
                   <div className="mb-6">
-                    <label className="text-[10px] font-mono uppercase tracking-widest text-stone-400 block mb-3 font-semibold">Choose Installment Schedule</label>
-                    <div className="grid grid-cols-2 gap-3">
-                      <button
-                        onClick={() => setPaymentPlan("flexi")}
-                        className={`py-2.5 px-4 rounded-xl border text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${paymentPlan === "flexi"
-                          ? "bg-wood-button text-white"
-                          : "border-stone-300 bg-white text-stone-600 hover:border-stone-400"
-                          }`}
-                      >
-                        Flexi Plan
-                      </button>
-                      <button
-                        onClick={() => setPaymentPlan("construction")}
-                        className={`py-2.5 px-4 rounded-xl border text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${paymentPlan === "construction"
-                          ? "bg-wood-button text-white"
-                          : "border-stone-300 bg-white text-stone-600 hover:border-stone-400"
-                          }`}
-                      >
-                        Construction
-                      </button>
+                    <label className="text-[10px] font-mono uppercase tracking-widest text-[#C5A880] block mb-2 font-semibold">Payment Milestone Schedule</label>
+                    <div className="bg-[#4E3629]/5 border border-[#C5A880]/30 rounded-xl p-3 flex justify-between items-center text-xs font-mono">
+                      <span className="text-[#211611] font-semibold">Standard Possession Plan</span>
+                      <span className="text-[#4E3629] font-bold">20% • 30% • 50%</span>
                     </div>
                   </div>
 
@@ -1496,7 +1619,7 @@ export default function Home() {
                       transition={{ duration: 1.0 }}
                     />
                     <text x="18" y="22" fill="#C5A880" fontFamily="monospace" fontSize="5" fontWeight="bold">RATE/SQFT</text>
-                    <text x="136" y="36" fill="#4E3629" fontFamily="monospace" fontSize="13" fontWeight="bold" textAnchor="end">5,500.00</text>
+                    <text x="136" y="36" fill="#4E3629" fontFamily="monospace" fontSize="13" fontWeight="bold" textAnchor="end">6,500.00</text>
 
                     {/* Keypad loop rendering buttons */}
                     {[0, 1, 2, 3].map((row) =>
@@ -1537,7 +1660,7 @@ export default function Home() {
               <div className="mt-6 p-4 bg-stone-50 border border-stone-200 rounded-xl flex items-start gap-3 text-xs text-stone-600 leading-relaxed font-light">
                 <Info className="text-[#4E3629]" size={16} />
                 <div>
-                  <strong className="block font-medium mb-0.5 text-charcoal">BSP Formula Rate: ₹5,500 / Sq. Ft.</strong>
+                  <strong className="block font-medium mb-0.5 text-charcoal">BSP Formula Rate: ₹6,500 / Sq. Ft.</strong>
                   Calculated values denote Base Selling Price. Additional charges like mandatory GST, stamp duty registration, and power backup utility links are billed extra at handover.
                 </div>
               </div>
@@ -1546,7 +1669,7 @@ export default function Home() {
             {/* LEDGER DETAILS CARD — w-full within 2-column grid */}
             <ScrollReveal className="bg-wood-dark bg-wood-lines text-[#FBFBFA] border border-[#C5A880]/20 rounded-2xl p-6 sm:p-8 w-full flex flex-col justify-between shadow-xl" delay={0.2}>
               <div>
-                <div className="flex justify-between items-center pb-4 border-b border-stone-850">
+                <div className="flex justify-between items-center pb-4 border-b border-stone-855">
                   <div>
                     <span className="text-[9px] font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">ESTIMATED TOTAL BSP OUTLAY</span>
                     <h3 className="font-serif text-2xl sm:text-3xl text-stone-100 font-bold mt-1">
@@ -1555,7 +1678,7 @@ export default function Home() {
                   </div>
                   <div className="text-right">
                     <span className="text-[9px] font-mono uppercase tracking-widest text-stone-555 block mt-1 font-semibold">SPECIFICATIONS</span>
-                    <span className="text-[#C5A880] text-xs font-mono block mt-1">{estimatorPlan.size} sqft × 5.5K</span>
+                    <span className="text-[#C5A880] text-xs font-mono block mt-1">{estimatorPlan.size} sqft × 6.5K</span>
                   </div>
                 </div>
 
