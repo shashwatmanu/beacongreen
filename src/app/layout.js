@@ -25,9 +25,9 @@ export const metadata = {
   description: "Dehradun's first budget premium housing project in the foothills of Mussoorie Hills. Nestled in challang, offering 1 BHK and 2 BHK elite residences with stunning panoramic views.",
   keywords: ["Beacon Green One", "Dehradun Real Estate", "Foothill living", "Mussoorie hills housing", "NCR Builder Dehradun", "Budget premium flats Dehradun", "1 BHK Dehradun", "2 BHK Dehradun"],
   icons: {
-    icon: "/images/beacon-favicon-dark.png",
-    shortcut: "/images/beacon-favicon-dark.png",
-    apple: "/images/beacon-favicon-dark.png",
+    icon: "/images/beacon-favicon-circle.png",
+    shortcut: "/images/beacon-favicon-circle.png",
+    apple: "/images/beacon-favicon-circle.png",
   },
   openGraph: {
     title: "Beacon Green One | Elevated Living Between Mountains & Modernity",

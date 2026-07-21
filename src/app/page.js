@@ -795,7 +795,7 @@ export default function Home() {
           {/* ABOUT BEACON HILLS ESTATE */}
           <ScrollReveal className="w-full mt-16 pt-16 border-t border-[#C5A880]/30 relative pb-4" delay={0.3}>
             {/* Left Side Building Towers (Bottom aligned of Development Vision section) */}
-            <div className="absolute left-[-2rem] sm:left-[-5rem] md:left-[-8rem] lg:left-[-11rem] bottom-0 pointer-events-none z-0 opacity-40">
+            <div className="absolute left-[-2rem] sm:left-[-5rem] md:left-[-8rem] lg:left-[-11rem] -bottom-6 pointer-events-none z-0 opacity-40">
               <svg className="w-40 sm:w-52 md:w-64 h-64" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <motion.path
                   d="M 10 240 L 10 70 L 100 70 L 100 240"
@@ -822,7 +822,7 @@ export default function Home() {
             </div>
 
             {/* Right Side Building Towers (Bottom aligned of Development Vision section) */}
-            <div className="absolute right-[-2rem] sm:right-[-5rem] md:right-[-8rem] lg:right-[-11rem] bottom-0 pointer-events-none z-0 opacity-40">
+            <div className="absolute right-[-2rem] sm:right-[-5rem] md:right-[-8rem] lg:right-[-11rem] -bottom-6 pointer-events-none z-0 opacity-40">
               <svg className="w-40 sm:w-52 md:w-64 h-64" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <motion.path
                   d="M 70 240 L 70 30 L 180 30 L 180 240"
@@ -888,7 +888,7 @@ export default function Home() {
               </div>
 
               {/* Leadership Container with 50% Photo Overlap Escaping Box */}
-              <div className="relative pt-12 md:pt-0 md:pl-28 mt-8">
+              <div className="relative pt-12 md:pt-0 md:pl-28 mt-8 flex flex-col-reverse md:block">
                 {/* Text Box Container */}
                 <div className="bg-[#FAF9F6] border border-[#C5A880]/30 p-6 sm:p-8 md:p-10 md:pl-36 rounded-2xl shadow-sm relative overflow-hidden">
                   {/* Subtle drafting watermark accent */}
@@ -934,8 +934,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Mobile View Chairman Photo (Clean stacked alignment for small screens) */}
-                <div className="md:hidden flex flex-col items-center mb-6 -mt-16 relative z-20">
+                {/* Mobile View Chairman Photo (Comes FIRST on mobile before text) */}
+                <div className="md:hidden flex flex-col items-center mb-6 relative z-20">
                   <div className="w-48 aspect-[4/5] bg-stone-100 border-4 border-white shadow-xl rounded-xl overflow-hidden relative">
                     <img
                       src="/images/hemant-kumar-singh.jpg"
@@ -1002,52 +1002,17 @@ export default function Home() {
             <p className="mt-2 text-stone-555 font-sans text-sm font-light">Proximity to primary healthcare, hospitality, and highway corridors.</p>
           </ScrollReveal>
 
-          {/* Double-row grid system for pixel-perfect header alignment */}
-          {/* Row 1: Aligned Headers */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-16 items-center mb-6">
-            {/* Column 1 Header */}
-            <div className="col-span-1 lg:col-span-7">
+          {/* Location Grid: Zone A (Header + Landmarks) and Zone B (Header + Map) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-16 items-start">
+
+            {/* Column 1: Zone A Header + Local Proximity Landmarks */}
+            <div className="col-span-1 lg:col-span-7 flex flex-col">
               <ScrollReveal>
-                <div className="flex items-center justify-between border-b border-[#C5A880]/30 pb-3 h-[38px]">
+                <div className="flex items-center justify-between border-b border-[#C5A880]/30 pb-3 mb-6 h-[38px]">
                   <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-[#C5A880] font-semibold">Zone A • Core Regional Landmarks</h3>
                 </div>
               </ScrollReveal>
-            </div>
-            {/* Column 2 Header */}
-            <div className="col-span-1 lg:col-span-5 mt-6 lg:mt-0">
-              <ScrollReveal>
-                <div className="flex justify-between items-center border-b border-[#C5A880]/30 pb-3 h-[38px]">
-                  <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-[#C5A880] font-semibold">Zone B • Map Views</h3>
-                  <div className="bg-[#FAF9F6] border border-stone-300/80 rounded-lg p-0.5 flex gap-0.5">
-                    <button
-                      onClick={() => setActiveMapTab("3d")}
-                      className={`px-3 py-1 text-[9px] font-semibold uppercase tracking-wider rounded transition-all cursor-pointer ${activeMapTab === "3d"
-                        ? "bg-wood-button text-white"
-                        : "text-stone-555 hover:text-[#211611]"
-                        }`}
-                    >
-                      3D Flight
-                    </button>
-                    <button
-                      onClick={() => setActiveMapTab("2d")}
-                      className={`px-3 py-1 text-[9px] font-semibold uppercase tracking-wider rounded transition-all cursor-pointer ${activeMapTab === "2d"
-                        ? "bg-wood-button text-white"
-                        : "text-stone-555 hover:text-[#211611]"
-                        }`}
-                    >
-                      2D Road Map
-                    </button>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
 
-          {/* Row 2: Aligned Contents */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-16 items-start">
-
-            {/* Column 1: Local Proximity (Unified list with gold-ringed badges) */}
-            <div className="col-span-1 lg:col-span-7">
               <ScrollReveal className="flex flex-col">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
@@ -1081,8 +1046,34 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            {/* Column 2: 3D Map vs 2D Toggle Viewport */}
-            <div className="col-span-1 lg:col-span-5 mt-6 lg:mt-0">
+            {/* Column 2: Zone B Header + 3D Map vs 2D Viewport */}
+            <div className="col-span-1 lg:col-span-5 flex flex-col">
+              <ScrollReveal>
+                <div className="flex justify-between items-center border-b border-[#C5A880]/30 pb-3 mb-6 h-[38px]">
+                  <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-[#C5A880] font-semibold">Zone B • Map Views</h3>
+                  <div className="bg-[#FAF9F6] border border-stone-300/80 rounded-lg p-0.5 flex gap-0.5">
+                    <button
+                      onClick={() => setActiveMapTab("3d")}
+                      className={`px-3 py-1 text-[9px] font-semibold uppercase tracking-wider rounded transition-all cursor-pointer ${activeMapTab === "3d"
+                        ? "bg-wood-button text-white"
+                        : "text-stone-555 hover:text-[#211611]"
+                        }`}
+                    >
+                      3D Flight
+                    </button>
+                    <button
+                      onClick={() => setActiveMapTab("2d")}
+                      className={`px-3 py-1 text-[9px] font-semibold uppercase tracking-wider rounded transition-all cursor-pointer ${activeMapTab === "2d"
+                        ? "bg-wood-button text-white"
+                        : "text-stone-555 hover:text-[#211611]"
+                        }`}
+                    >
+                      2D Road Map
+                    </button>
+                  </div>
+                </div>
+              </ScrollReveal>
+
               <ScrollReveal className="flex flex-col">
 
                 {/* Map Wrapper Panel */}
