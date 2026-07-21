@@ -888,7 +888,7 @@ export default function Home() {
               </div>
 
               {/* Leadership Container with 50% Photo Overlap Escaping Box */}
-              <div className="relative pt-0 md:pl-28 mt-3 flex flex-col-reverse md:block">
+              <div className="relative pt-2 md:pt-0 md:pl-28 mt-2 flex flex-col-reverse md:block">
                 {/* Text Box Container */}
                 <div className="bg-[#FAF9F6] border border-[#C5A880]/30 p-6 sm:p-8 md:p-10 md:pl-36 rounded-2xl shadow-sm relative overflow-hidden">
                   {/* Subtle drafting watermark accent */}
@@ -935,7 +935,7 @@ export default function Home() {
                 </div>
 
                 {/* Mobile View Chairman Photo (Comes FIRST on mobile before text) */}
-                <div className="md:hidden flex flex-col items-center mb-3 mt-2 relative z-20">
+                <div className="md:hidden flex flex-col items-center mt-2 mb-4 relative z-20">
                   <div className="w-48 aspect-[4/5] bg-stone-100 border-4 border-white shadow-xl rounded-xl overflow-hidden relative">
                     <img
                       src="/images/hemant-kumar-singh.jpg"
