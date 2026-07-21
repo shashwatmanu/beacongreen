@@ -460,7 +460,7 @@ export default function Home() {
               />
             </div>
             <div>
-              <span className="font-serif font-extrabold tracking-widest text-[#211611] text-xs sm:text-sm block leading-none">BEACON HILL ESTATE</span>
+              <span className="font-serif font-extrabold tracking-widest text-[#211611] text-xs sm:text-sm block leading-none">BEACON HILLS ESTATE</span>
               <span className="text-[7px] font-mono tracking-widest text-[#C5A880] uppercase block mt-1">DEHRADUN FOOTHILLS LEAFLET</span>
             </div>
           </a>
